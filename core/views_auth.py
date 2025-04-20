@@ -17,10 +17,11 @@ class CustomLoginView(APIView):
         except Usuario.DoesNotExist:
             return Response({"detail": "Usuario no encontrado"}, status=status.HTTP_401_UNAUTHORIZED)
 
-        if usuario.contraseña != contraseña:
+        # ✅ CAMBIO IMPORTANTE AQUÍ
+        if not usuario.check_password(contraseña):
             return Response({"detail": "Contraseña incorrecta"}, status=status.HTTP_401_UNAUTHORIZED)
 
-        refresh = RefreshToken.for_user(usuario)  # esto fallaría si Usuario no hereda de AbstractBaseUser, pero vamos a devolver el token manual:
+        refresh = RefreshToken.for_user(usuario)
 
         return Response({
             "refresh": str(refresh),
@@ -37,10 +38,11 @@ class RegistroClienteView(APIView):
 
         serializer = UsuarioSerializer(data=data)
         if serializer.is_valid():
-            serializer.save()
+            usuario = serializer.save()
+            usuario.set_password(data['password'])  
+            usuario.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class RegistroAdminView(APIView):
     permission_classes = [IsAuthenticated, EsAdmin]
@@ -51,6 +53,8 @@ class RegistroAdminView(APIView):
 
         serializer = UsuarioSerializer(data=data)
         if serializer.is_valid():
-            serializer.save()
+            usuario = serializer.save()
+            usuario.set_password(data['password'])  
+            usuario.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

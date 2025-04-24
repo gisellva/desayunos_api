@@ -8,7 +8,7 @@ class UsuarioManager(BaseUserManager):
             raise ValueError('El correo electrónico es obligatorio')
         
         correo_electronico = self.normalize_email(correo_electronico)
-        tipo_usuario = extra_fields.pop('tipo_usuario', 'cliente')  # lo extraemos de extra_fields
+        tipo_usuario = extra_fields.pop('tipo_usuario', 'cliente')  
 
         user = self.model(
             correo_electronico=correo_electronico,

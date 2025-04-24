@@ -10,7 +10,7 @@ class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
         fields = '__all__'
-        read_only_fields = ['usuario']  # El usuario no se espera desde el body
+        read_only_fields = ['usuario']  
 
     def validate(self, data):
         request_user = self.context['request'].user

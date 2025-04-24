@@ -17,7 +17,7 @@ class CustomLoginView(APIView):
         except Usuario.DoesNotExist:
             return Response({"detail": "Usuario no encontrado"}, status=status.HTTP_401_UNAUTHORIZED)
 
-        # ✅ CAMBIO IMPORTANTE AQUÍ
+       
         if not usuario.check_password(contraseña):
             return Response({"detail": "Contraseña incorrecta"}, status=status.HTTP_401_UNAUTHORIZED)
 

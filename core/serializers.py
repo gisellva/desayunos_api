@@ -35,9 +35,13 @@ class DesayunoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class IngredienteDesayunoSerializer(serializers.ModelSerializer):
+    desayuno_nombre = serializers.CharField(source='desayuno.nombre', read_only=True)
+    item_nombre = serializers.CharField(source='item.nombre_item', read_only=True)
+
     class Meta:
         model = IngredienteDesayuno
-        fields = '__all__'
+        fields = ['id', 'cantidad_necesaria', 'desayuno', 'item', 'desayuno_nombre', 'item_nombre']
+
 
 class PedidoSerializer(serializers.ModelSerializer):
     class Meta:

@@ -80,7 +80,7 @@ class Desayuno(models.Model):
 
 # --- INGREDIENTE EN DESAYUNO ---
 class IngredienteDesayuno(models.Model):
-    desayuno = models.ForeignKey(Desayuno, on_delete=models.CASCADE)
+    desayuno = models.ForeignKey(Desayuno, on_delete=models.CASCADE, related_name='ingredientes')
     item = models.ForeignKey(Inventario, on_delete=models.CASCADE)
     cantidad_necesaria = models.IntegerField()
 

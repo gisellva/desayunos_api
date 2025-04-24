@@ -2,5 +2,7 @@
     "vscode-pets.petColor": "akita",
     "vscode-pets.petSize": "small",
     "vscode-pets.petType": "totoro",
-    "vscode-pets.position": "explorer"
+    "vscode-pets.position": "explorer",
+    "vscode-pets.disableEffects": false,
+    "vscode-pets.throwBallWithMouse": true
 }

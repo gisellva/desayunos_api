@@ -17,6 +17,7 @@
 
 
 
+
 ## 🧱 Tecnologías
 
 - Django 5.2  
@@ -27,19 +28,21 @@
 
 
 
+
 ## 🧪 Cómo probar la API
 
 1. **Levanta el servidor:**
-    ```sh
-    python manage.py runserver
-    ```
+ ```sh
+  python manage.py runserver
+  ```
 2.Crea un usuario cliente: POST a /api/registrar-cliente/
 3.Haz login y guarda tu token JWT: POST a /api/login/
 4.Usa el token en el header:
  ```sh
-Authorization: Bearer <tu_token>
+ Authorization: Bearer <tu_token>
   ```
 5.Crea dirección, desayunos, inventario y... ¡haz un pedido!
+
 
 
 
@@ -49,10 +52,15 @@ Authorization: Bearer <tu_token>
 ❌ Si un ingrediente necesario está en cero → el desayuno se marca automáticamente como no disponible.
 
 
+
+
 ## 🔐 Roles y permisos
 
 1.Admin: Puede crear desayunos, inventario, ingredientes.
 2.Cliente: Solo puede hacer pedidos y ver información.
+
+
+
 
 ## 🥚 ¿Y si algo falla?
 Revisa:
@@ -60,6 +68,9 @@ Revisa:
 1.Que el token esté actualizado (no expirado).
 2.Que el desayuno tenga inventario suficiente.
 3.Que el usuario tenga tipo "cliente" para hacer pedidos.
+
+
+
 
 ## 🌮 Autora
 Creado con mucho   amor por una desarrolladora  💻💜

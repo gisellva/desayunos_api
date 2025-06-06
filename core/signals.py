@@ -7,11 +7,11 @@ def actualizar_disponibilidad_desayuno(desayuno):
     ingredientes = IngredienteDesayuno.objects.filter(desayuno=desayuno)
     for ingrediente in ingredientes:
         if ingrediente.item.cantidad_disponible < ingrediente.cantidad_necesaria:
-            if desayuno.disponibilidad:  # Evita llamada innecesaria
+            if desayuno.disponibilidad: 
                 desayuno.disponibilidad = False
                 Desayuno.objects.filter(id=desayuno.id).update(disponibilidad=False)
             return
-    if not desayuno.disponibilidad:  # Evita llamada innecesaria
+    if not desayuno.disponibilidad:  
         Desayuno.objects.filter(id=desayuno.id).update(disponibilidad=True)
 
 

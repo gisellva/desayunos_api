@@ -13,5 +13,7 @@ router.register(r'pedidos', PedidoViewSet)
 router.register(r'detalles-pedido', DetallePedidoViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', include(router.urls)), 
+    
+    path('mi-perfil/', MiPerfilView.as_view(), name='mi-perfil'),
 ]
